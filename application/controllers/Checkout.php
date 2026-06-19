@@ -237,8 +237,4 @@ public function get_diskon()
     $diskon = $this->Diskon_model->get($id);
     echo json_encode($diskon);
 }
-
-
-
-
 }

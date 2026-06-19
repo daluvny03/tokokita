@@ -34,7 +34,7 @@
             <?php foreach ($pembeli as $p) : ?>
               <tr>
                 <td class="text-center"><?= $p['id']; ?></td>
-                <td><?= $p['nama']; ?></td>
+                <td><?= $p['nama_pembeli']; ?></td>
                 <td><?= $p['email']; ?></td>
                 <td><?= $p['no_hp']; ?></td>
                 <td><?= $p['alamat']; ?></td>

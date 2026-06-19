@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 class Produk extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -17,7 +15,6 @@ class Produk extends CI_Controller
             redirect('admin/auth');
         }
     }
-
     public function index()
     {
         $data['produk'] = $this->Produk_model->get_all();
@@ -26,7 +23,6 @@ class Produk extends CI_Controller
         $this->load->view('admin/produk/index', $data);
         $this->load->view('admin/footer');
     }
-
     public function create() {
         $data['kategori'] = $this->Produk_model->get_kategori();
 
@@ -42,7 +38,6 @@ class Produk extends CI_Controller
             } else {
                 $foto = null;
             }
-
             $insert = [
                 'kategori_id' => $this->input->post('kategori_id'),
                 'nama_produk' => $this->input->post('nama_produk'),
@@ -52,12 +47,10 @@ class Produk extends CI_Controller
                 'status'      => $this->input->post('status'),
                 'foto'        => $foto,
             ];
-
             $this->Produk_model->insert($insert);
             $this->session->set_flashdata('success', 'Produk berhasil ditambahkan.');
             redirect('admin/produk');
         }
-
         $this->load->view('admin/header');
         $this->load->view('admin/menu');
         $this->load->view('admin/produk/create', $data);
@@ -68,11 +61,9 @@ class Produk extends CI_Controller
         $this->load->model('Produk_model');
         $this->load->model('Kategori_model');
         $this->load->model('Cart_model'); // Tambahkan ini untuk load model cart
-    
         $data['produk'] = $this->Produk_model->get_by_kategori($id);
         $kategori = $this->Kategori_model->get_by_id($id);
         $data['kategori'] = $kategori;
-    
         // Tambahkan ini untuk hitung cart count
         $pembeli_id = $this->session->userdata('pembeli_id');
         $data['cart_count'] = 0;
@@ -86,10 +77,9 @@ class Produk extends CI_Controller
         $this->load->view('homepage/footer');
     }
     
-
     public function edit($id)
     {
-        $produk = $this->Produk_model->get_produk_by_id($id);
+        $produk = $this->Produk_model->get_by_id($id);
     
         if (!$produk) {
             show_404();
@@ -114,7 +104,6 @@ class Produk extends CI_Controller
                     return;
                 }
             }
-    
             $data_update = [
                 'kategori_id' => $this->input->post('kategori_id'),
                 'nama_produk' => $this->input->post('nama_produk'),

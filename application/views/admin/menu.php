@@ -1,4 +1,5 @@
-<div class="container mt-4">
+<div class="main-content">
+    <div class="container mt-4">
     <div class="row">
         <div class="col-md-3">
             <!-- Sidebar -->

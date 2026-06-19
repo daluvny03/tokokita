@@ -67,6 +67,4 @@ $this->db->select('pertanyaan_produk.*, produk.nama_produk as produk_nama, pembe
          return $this->db->get_where('pertanyaan_produk', ['produk_id' => $produk_id])->result();
 
 }
-    
-    
 }

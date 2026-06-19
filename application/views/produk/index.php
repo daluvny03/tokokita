@@ -13,9 +13,8 @@
               <a href="#" class="btn btn-primary btn-sm">Lihat Detail</a>
             </div>
             <a href="<?= site_url('cart/tambah/' . $p['id']); ?>" class="btn btn-sm btn-outline-primary">
-    🛒 Tambah ke Cart
-</a>
-
+                🛒 Tambah ke Cart
+            </a>
           </div>
         </div>
       <?php endforeach; ?>

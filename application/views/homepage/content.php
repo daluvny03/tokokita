@@ -66,12 +66,12 @@
       <div class="row">
       <?php if (!empty($produk)) : ?>
   <?php foreach ($produk as $p) : ?>
-    <div class="col-md-4 mb-4 mt-3">
-      <div class="position-relative h-100">
+    <div class="col-md-4 mb-2 mt-3">
+      <div class="position-relative h-90">
         <!-- Card sebagai link -->
-        <a href="<?= site_url('home/detail/' . $p['id']); ?>" class="text-decoration-none text-dark d-block h-100">
-          <div class="card product-card h-100">
-            <img src="<?= base_url('uploads/' . $p['foto']); ?>" class="card-img-top" style="height: 200px; object-fit: cover;" alt="<?= $p['nama_produk']; ?>">
+        <a href="<?= site_url('home/detail/' . $p['id']); ?>" class="text-decoration-none text-dark d-block h-90">
+          <div class="card product-card h-90">
+            <img src="<?= base_url('uploads/' . $p['foto']); ?>" class="card-img-top" style="height: 180px; object-fit: cover;" alt="<?= $p['nama_produk']; ?>">
             <div class="card-body">
               <h6 class="card-title"><?= $p['nama_produk']; ?></h6>
               <p class="text-danger">Rp <?= number_format($p['harga'], 0, ',', '.'); ?></p>
@@ -80,7 +80,7 @@
           </div>
         </a>
         <!-- Tombol Tambah ke Cart -->
-        <div class="mb-4">
+        <div class="mb-1 mt-1">
           <a href="<?= site_url('Cart/add/' . $p['id']); ?>" class="btn btn-sm btn-outline-primary w-100">
             🛒 Tambah ke Cart
           </a>
