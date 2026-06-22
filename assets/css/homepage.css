@@ -1,49 +1,9 @@
-body {
-    background-color: #f5f5f5;
-}
-.navbar {
-    background-color: #00a96e;
-}
-.navbar-brand,
-.nav-link {
-    color: #fff !important;
-    font-weight: 600;
-}
-.search-bar {
-    max-width: 500px;
-    width: 100%;
-}
-.btn-search {
-    background-color: #02885a;
-    color: #fff;
-}
-.sidebar {
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-}
-.sidebar a {
-    color: #333;
-    text-decoration: none;
-    display: block;
-    padding: 8px;
-    border-radius: 5px;
-}
-.sidebar a:hover {
-    background-color: #f0f0f0;
-}
-.product-card {
-    transition: transform 0.2s;
-}
-.product-card:hover {
-    transform: scale(1.01);
-}
-.footer {
-    background-color: #343a40;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
+/* =========================================================
+   MARKETPLACE — DESIGN SYSTEM
+   Brand: violet (#6D28D9) -> pink (#EC4899) gradient
+   Font: Poppins (display) + Inter (body)
+   ========================================================= */
+
 :root{
     --mp-violet: #6D28D9;
     --mp-pink: #EC4899;
@@ -52,7 +12,22 @@ body {
     --mp-gray: #6B7280;
     --mp-border: #E5E7EB;
 }
+
+/* Catatan: idealnya baris @import ini dihapus dari sini dan font
+   dipanggil lewat <link> di <head> (lebih cepat render).
+   Lihat penjelasan di chat sebelumnya. Untuk sementara tetap
+   disertakan supaya file ini langsung jalan tanpa ubah header. */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FAFAFC;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
 .mp-navbar{
     font-family: 'Inter', sans-serif;
     padding: 0.6rem 0;
@@ -63,6 +38,7 @@ body {
     padding: 0.35rem 0;
     box-shadow: 0 6px 20px -8px rgba(31,16,71,0.18);
 }
+
 /* Brand */
 .mp-brand{
     display: flex;
@@ -84,6 +60,7 @@ body {
     box-shadow: 0 6px 14px -4px rgba(109,40,217,0.45);
 }
 .mp-brand-text{ font-size: 1.2rem; }
+
 /* Nav links */
 .mp-nav-left .nav-link,
 .mp-nav-right .nav-link{
@@ -109,15 +86,14 @@ body {
 }
 .mp-nav-left .nav-link:hover{ color: var(--mp-violet) !important; }
 .mp-nav-left .nav-link:hover::after{ transform: scaleX(1); }
-/* Search pill */
+
+/* Search pill (dikembalikan ke bentuk pill 999px, tinggi auto agar tidak terpotong) */
 .mp-search{
     align-items: stretch;
     background: #F8F7FB;
     border: 1.5px solid var(--mp-border);
-    border-radius: 10px;
+    border-radius: 999px;
     overflow: hidden;
-    height: 2rem;
-    transition: border-color .2s ease, box-shadow .2s ease;
     min-width: 380px;
 }
 .mp-search:focus-within{
@@ -158,6 +134,7 @@ body {
     transition: opacity .2s ease;
 }
 .mp-search-btn:hover{ opacity: 0.9; }
+
 /* Cart */
 .mp-cart-link{
     display: flex;
@@ -178,7 +155,8 @@ body {
     padding: 0 4px;
     margin-left: 2px;
 }
-/* Buttons */
+
+/* Buttons (dipakai di navbar maupun konten produk) */
 .mp-btn-primary{
     background: linear-gradient(135deg, var(--mp-violet), var(--mp-pink));
     color: #fff !important;
@@ -187,10 +165,12 @@ body {
     padding: 0.5rem 1.3rem;
     border-radius: 999px;
     text-decoration: none;
+    text-align: center;
     transition: transform .15s ease, box-shadow .15s ease;
     box-shadow: 0 8px 18px -6px rgba(109,40,217,0.45);
 }
 .mp-btn-primary:hover{ transform: translateY(-1px); color:#fff; }
+
 .mp-btn-outline{
     border: 1.5px solid var(--mp-border);
     color: var(--mp-ink) !important;
@@ -199,9 +179,378 @@ body {
     padding: 0.45rem 1.1rem;
     border-radius: 999px;
     text-decoration: none;
-    transition: border-color .2s ease, color .2s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
 }
-.mp-btn-outline:hover{ border-color: var(--mp-violet); color: var(--mp-violet) !important; }
+.mp-btn-outline:hover{
+    border-color: var(--mp-violet);
+    color: var(--mp-violet) !important;
+    background: #F8F4FF;
+}
+.mp-btn-block{ width: 100%; display: block; }
+
 @media (max-width: 991px){
     .mp-search{ min-width: 100%; margin: 0.75rem 0; }
+}
+
+/* =========================================================
+   CAROUSEL / PROMO SLIDER
+   ========================================================= */
+
+.mp-carousel-inner{
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px -16px rgba(31,16,71,0.25);
+}
+.mp-carousel-overlay{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(31,16,71,0.35) 100%);
+}
+.mp-carousel-control{
+    width: 42px;
+    height: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    opacity: 1;
+    box-shadow: 0 6px 16px -4px rgba(31,16,71,0.25);
+}
+.mp-carousel-control.carousel-control-prev{ left: 16px; }
+.mp-carousel-control.carousel-control-next{ right: 16px; }
+.mp-carousel-arrow{
+    color: var(--mp-violet);
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 700;
+}
+#promoCarousel .carousel-indicators [data-bs-target]{
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.6;
+}
+#promoCarousel .carousel-indicators .active{
+    opacity: 1;
+    background: var(--mp-amber);
+}
+
+/* =========================================================
+   SIDEBAR (Kategori & Merek)
+   ========================================================= */
+
+.mp-sidebar{
+    background: #fff;
+    border: 1px solid var(--mp-border);
+    border-radius: 16px;
+    padding: 1.1rem 1.2rem;
+}
+.mp-sidebar-title{
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--mp-ink);
+    margin-bottom: 0.9rem;
+    position: relative;
+    padding-bottom: 0.6rem;
+}
+.mp-sidebar-title::after{
+    content:"";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 28px; height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--mp-violet), var(--mp-pink));
+}
+.mp-sidebar-list{
+    list-style: none;
+    margin: 0; padding: 0;
+}
+.mp-sidebar-list li + li{ margin-top: 2px; }
+.mp-sidebar-list a{
+    display: block;
+    padding: 0.5rem 0.7rem;
+    border-radius: 10px;
+    color: var(--mp-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all .18s ease;
+}
+.mp-sidebar-list a:hover{
+    background: #F8F4FF;
+    color: var(--mp-violet);
+    border-left-color: var(--mp-violet);
+    padding-left: 0.9rem;
+}
+
+@media (max-width: 767px){
+    .mp-sidebar{ margin-bottom: 1rem; }
+}
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+.mp-section-title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--mp-ink);
+    margin: 0;
+}
+.mp-section-sub{
+    font-size: 0.85rem;
+    color: var(--mp-gray);
+}
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
+
+.mp-product-card{
+    border: 1px solid var(--mp-border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    background: #fff;
+}
+.mp-product-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 18px 32px -16px rgba(31,16,71,0.22);
+    border-color: #EADDFF;
+}
+.mp-product-img-wrap{
+    overflow: hidden;
+    height: 180px;
+}
+.mp-product-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .35s ease;
+}
+.mp-product-card:hover .mp-product-img{ transform: scale(1.06); }
+
+.mp-product-name{
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--mp-ink);
+    margin-bottom: 0.35rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.4em;
+}
+.mp-product-price{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--mp-violet);
+    margin-bottom: 0.7rem;
+}
+
+/* =========================================================
+   DETAIL PRODUK
+   ========================================================= */
+
+.mp-detail-page{ position: relative; }
+
+.mp-detail-img-wrap{
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--mp-border);
+    background: #fff;
+    box-shadow: 0 16px 40px -16px rgba(31,16,71,0.18);
+    position: sticky;
+    top: 90px;
+}
+.mp-detail-img{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.mp-product-title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--mp-ink);
+    margin-bottom: 0.4rem;
+}
+.mp-price-detail{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--mp-violet);
+    margin-bottom: 0.7rem;
+}
+
+.mp-stock-badge{
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    background: #ECFDF5;
+    color: #047857;
+    margin-bottom: 1.3rem;
+}
+.mp-stock-badge.low{ background: #FEF3C7; color: #B45309; }
+.mp-stock-badge.empty{ background: #FEE2E2; color: #B91C1C; }
+
+.mp-desc-title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--mp-ink);
+    margin-bottom: 0.4rem;
+}
+.mp-desc-text{
+    color: var(--mp-gray);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.mp-divider{
+    border: none;
+    border-top: 1px solid var(--mp-border);
+    margin: 1.6rem 0;
+}
+
+/* CTA bar — biasa di desktop, jadi sticky bottom bar di mobile */
+.mp-cta-wrap{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+.mp-cta-btn{ flex: 1; }
+
+@media (max-width: 767px){
+    .mp-cta-wrap{
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        background: #fff;
+        padding: 0.8rem 1rem;
+        box-shadow: 0 -8px 24px -12px rgba(31,16,71,0.25);
+        z-index: 1030;
+        margin-bottom: 0;
+    }
+    .mp-detail-page{ padding-bottom: 88px; }
+    .mp-detail-img-wrap{ position: static; }
+}
+
+/* Tanya Produk */
+.mp-qna-title{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--mp-ink);
+    margin-bottom: 0.9rem;
+}
+
+.mp-qna-form{
+    background: #fff;
+    border: 1px solid var(--mp-border);
+    border-radius: 14px;
+    padding: 1rem;
+    margin-bottom: 1.4rem;
+}
+.mp-qna-form textarea.form-control{
+    border-radius: 10px;
+    border: 1.5px solid var(--mp-border);
+    font-size: 0.9rem;
+    resize: none;
+}
+.mp-qna-form textarea.form-control:focus{
+    border-color: var(--mp-violet);
+    box-shadow: 0 0 0 4px rgba(109,40,217,0.12);
+}
+
+.mp-login-hint{
+    background: #F8F4FF;
+    border: 1px dashed #D8C5FF;
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    color: var(--mp-gray);
+    font-size: 0.9rem;
+}
+.mp-login-hint a{ color: var(--mp-violet); font-weight: 600; text-decoration: none; }
+
+.mp-alert-success{
+    background: #ECFDF5;
+    color: #047857;
+    border: 1px solid #A7F3D0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+.mp-qna-list{ display: flex; flex-direction: column; gap: 0.9rem; }
+.mp-qna-item{
+    background: #fff;
+    border: 1px solid var(--mp-border);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+}
+.mp-qna-head{ display: flex; gap: 10px; align-items: flex-start; }
+.mp-avatar{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--mp-violet), var(--mp-pink));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+.mp-qna-name{ font-weight: 600; color: var(--mp-ink); font-size: 0.9rem; }
+.mp-qna-text{ color: var(--mp-ink); font-size: 0.9rem; }
+.mp-qna-time{ font-size: 0.75rem; color: var(--mp-gray); }
+
+.mp-answer-box{
+    margin-top: 0.7rem;
+    margin-left: 44px;
+    padding: 0.7rem 1rem;
+    background: #F8F4FF;
+    border-left: 3px solid var(--mp-violet);
+    border-radius: 10px;
+}
+.mp-answer-label{ color: var(--mp-violet); font-weight: 700; font-size: 0.8rem; }
+
+.mp-answer-form{ margin-top: 0.7rem; margin-left: 44px; }
+.mp-answer-form .form-control{
+    border-radius: 999px 0 0 999px;
+    border: 1.5px solid var(--mp-border);
+    font-size: 0.9rem;
+}
+.mp-answer-form .form-control:focus{
+    border-color: var(--mp-violet);
+    box-shadow: none;
+}
+
+@media (max-width: 575px){
+    .mp-answer-box, .mp-answer-form{ margin-left: 0; }
+}
+
+/* =========================================================
+   FOOTER (belum di-redesign — masih versi lama)
+   ========================================================= */
+
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
 }

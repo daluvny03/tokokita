@@ -15,7 +15,6 @@ class Home extends CI_Controller
       $data['produk'] = $this->Produk_model->get_produk_tersedia();
       $data['kategori'] = $this->Kategori_model->get_all();
       $data['merek'] = $this->merek_model->get_all_merek();
-  
       // Hitung jumlah cart jika pembeli sudah login
       $pembeli_id = $this->session->userdata('pembeli_id');
       $data['cart_count'] = 0;
@@ -32,9 +31,10 @@ class Home extends CI_Controller
 {
     $this->load->model('admin/Produk_model', 'Produk_model');
     $this->load->model('Cart_model');
+    $this->load->model('Kategori_model');
 
     $data['produk'] = $this->Produk_model->get_by_id($id);
-
+    $data['kategori'] = $this->Kategori_model->get_all();
     if (!$data['produk']) {
         show_404(); // Produk tidak ditemukan
     }

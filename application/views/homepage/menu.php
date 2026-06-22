@@ -1,3 +1,4 @@
+<div class="main-content">
 <!-- Header / Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top mp-navbar" id="mainNavbar">
     <div class="container">
@@ -29,7 +30,7 @@
                 <select name="kategori" class="mp-search-category">
                     <option value="">Kategori</option>
                     <?php foreach ($kategori as $k) : ?>
-                        <option value="<?= $k['nama_kategori']; ?>"><?= $k['nama_kategori']; ?></option>
+                        <option value="<?= $k['nama_kategori']; ?>"><?=$k['nama_kategori']; ?></option>
                     <?php endforeach; ?>
                 </select>
                 <span class="mp-search-divider"></span>

@@ -1,3 +1,4 @@
+</div>
 <!-- Footer -->
 <div class="footer mt-4">
     <p>&copy; 2025 Marketplace. All Rights Reserved.</p>
