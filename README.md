@@ -1,4 +1,4 @@
-# TokoKita 2750 - Marketplace E-commerce
+# TokoKita 2750 - Marketplace E-commerce. by Aza
 
 Sistem marketplace berbasis web untuk mengelola jual beli produk online dengan fitur lengkap untuk admin, penjual, dan pembeli.
 
